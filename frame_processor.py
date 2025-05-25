@@ -51,5 +51,4 @@ def process_video(video_path, target_fps=5, resize_dim=(1280, 720)):
     cap.release()
     print(frames[0].shape)
 
-
     return frames

@@ -26,7 +26,6 @@ def detect_motion(frames, frame_idx, threshold=25, min_area=350):
     current_frame = frames[frame_idx]
     prev_frame = frames[frame_idx - 1]
 
-
     # Example starter code:
     motion_boxes = []
     kernel_size = (21, 21)
@@ -39,13 +38,11 @@ def detect_motion(frames, frame_idx, threshold=25, min_area=350):
 
     absolute_diff = cv2.absdiff(current_frame, prev_frame)
 
-
     # 4. Apply threshold
     _, absolute_diff = cv2.threshold(absolute_diff, threshold, 255, cv2.THRESH_BINARY)
 
     # Dilate image
     dilated_image = cv2.dilate(absolute_diff, None, iterations=5)
-
 
     # Countours
 

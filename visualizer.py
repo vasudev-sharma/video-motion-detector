@@ -41,19 +41,6 @@ def visualize_results(
         viewport_video_path, fourcc, 5, (vp_width, vp_height)
     )
 
-    # TODO: Implement visualization
-    # 1. Process each frame
-    #    a. Create a copy of the frame for visualization
-    #    b. Draw bounding boxes around motion regions
-    #       (hint: cv2.rectangle with green color (0, 255, 0))
-    #    c. Draw the viewport rectangle
-    #       (hint: cv2.rectangle with blue color (255, 0, 0))
-    #    d. Extract the viewport content (the area inside the viewport)
-    #    e. Add frame number to the visualization (hint: cv2.putText)
-    #    f. Save visualization frames and viewport frames as images
-    #    g. Write frames to both video writers
-    # 2. Release the video writers when done
-
     # Example starter code:
     for i, frame in enumerate(frames):
         # Your implementation here
@@ -63,9 +50,6 @@ def visualize_results(
         for box in motion_results[i]:
             x1, y1, x2, y2 = box
             cv2.rectangle(frame_copy, (x1, y1), (x2, y2), (0, 255, 0))
-        # cv2.imshow("Frame copy", frame_copy)
-
-        # cv2.waitKey(0)
 
         # Draw viewport rectangle
         cx, cy = viewport_positions[i]
@@ -73,10 +57,8 @@ def visualize_results(
         y1 = int(max(cy - vp_height // 2, 0))
         x2 = int(min(cx + vp_width // 2, width))
         y2 = int(min(cy + vp_height // 2, height))
-        print(x1, y1, x2, y2)
+
         cv2.rectangle(frame_copy, (x1, y1), (x2, y2), (255, 0, 0), 2)
-        # cv2.imshow("Viewport rectangle", frame_copy)
-        # cv2.waitKey(0)
 
         cv2.putText(
             frame_copy,
@@ -103,7 +85,6 @@ def visualize_results(
         # Resize viewport crop to fixed size in case of edge crop
         viewport_writer.write(cv2.resize(crop, (vp_width, vp_height)))
 
-    # TODO: fixme : videos not saving
     video_writer.release()
     viewport_writer.release()
 
