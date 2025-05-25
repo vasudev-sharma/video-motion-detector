@@ -7,7 +7,7 @@ In your virtual environment, install all the dependencies
 
 ## Testing 
 Run the `pipeline.py`
-- `pipeline.py" --video sample_video_clip.mp4`
+- `python pipeline.py --video data/sample_video_clip.mp4`
 
 Running the pipeline.py generates the following files and directories in the `output` directory. Here, `frame` and `viewport` directory contains annotated frames with motion detection and viewport tracking. 
 
@@ -36,4 +36,5 @@ As reference, frame and viewport images respectively
 ## Challenges I encountered:
 1. Motion Detection
     - Tuning kernel size, dilation iterations, thresholding constants, and area threshold of hyper parameteres
-2. 
+2. View Port Detection
+    -  Tuning parameters for kalman filters
