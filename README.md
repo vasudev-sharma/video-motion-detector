@@ -29,8 +29,10 @@ As reference, frame and viewport images respectively
     - Filter the countour areas and thereby detect motions
 3. ViewPort tracking
     - Tracks the viewport center across frames on detected motions 
-    - Uses Kalman Filtering to track 2D positions 
+    - Use area weighted ROI to detect bounding boxes in crowded areas
+    - Uses Kalman Filtering to track 2D positions : for temporal smoothness and stability
     - Multiple Kalman filters per object to keep track of them
+    - Clamps viewport position to stay inside frame
 
 
 ## Challenges I encountered:
@@ -38,3 +40,15 @@ As reference, frame and viewport images respectively
     - Tuning kernel size, dilation iterations, thresholding constants, and area threshold of hyper parameteres
 2. View Port Detection
     -  Tuning parameters for kalman filters
+
+
+## Future Improvements
+    - Return box width/height from calculate_region_of_interest to support zoom or cropping.
+
+    - Add adaptive Kalman tuning based on scene activity.
+
+    - Filter out small or jittery motion boxes.
+
+    - Track over time using optical flow or persistent object IDs.
+
+    - Log velocity or motion stats for evaluation and debugging.
