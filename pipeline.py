@@ -9,10 +9,10 @@ This is the main entry point for the motion detection and viewport tracking prog
 import os
 import argparse
 
-from frame_processor import process_video
-from motion_detector import detect_motion
-from viewport_tracker import track_viewport
-from visualizer import visualize_results
+from src.frame_processor import process_video
+from src.motion_detector import detect_motion
+from src.viewport_tracker import track_viewport
+from src.visualizer import visualize_results
 
 
 def parse_args():
